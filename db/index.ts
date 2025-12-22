@@ -3,8 +3,6 @@ import { drizzle } from "drizzle-orm/mysql2";
 import { createPool, type Pool } from "mysql2/promise";
 
 declare global {
-  // Prevent multiple pools in dev (HMR)
-  // eslint-disable-next-line no-var
   var mysqlPool: Pool | undefined;
 }
 
