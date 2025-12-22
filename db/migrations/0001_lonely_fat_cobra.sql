@@ -1,0 +1,1 @@
+ALTER TABLE `events` ADD `organization_name` varchar(255) NOT NULL;

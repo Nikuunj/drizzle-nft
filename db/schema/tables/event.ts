@@ -5,6 +5,7 @@ import { status, tags } from "./tags";
 
 export const events = mysqlTable("events", {
   id: char("id", { length: 36 }).primaryKey().default(sql`(UUID())`),
+  organizationName: varchar("organization_name", { length: 255 }).notNull(),
   title: varchar("title", { length: 50 }).notNull(),
   description: varchar("description", { length: 255 }).notNull(),
   location: varchar("location", { length: 255 }).notNull(),
