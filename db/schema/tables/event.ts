@@ -2,6 +2,8 @@ import { sql } from "drizzle-orm";
 import { char, int, mysqlTable, timestamp, varchar } from "drizzle-orm/mysql-core";
 import { user } from "./user";
 import { status, tags } from "./tags";
+import { createInsertSchema } from "drizzle-zod";
+import z from "zod";
 
 export const events = mysqlTable("events", {
   id: char("id", { length: 36 }).primaryKey().default(sql`(UUID())`),
@@ -24,3 +26,8 @@ export const eventsTags = mysqlTable("events_tags", {
   eventsId: char("eventsId", { length: 36 }).notNull().references(() => events.id)
 })
 
+export const eventsSchema = createInsertSchema(events);
+export const eventsTagsSchema = createInsertSchema(eventsTags);
+
+export type EventsSchema = z.infer<typeof eventsSchema>;
+export type EventsTagsSchema = z.infer<typeof eventsTagsSchema>;

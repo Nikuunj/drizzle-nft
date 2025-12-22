@@ -1,9 +1,13 @@
 import { char, mysqlTable } from "drizzle-orm/mysql-core";
 import { user } from "./user";
 import { events } from "./event";
-
+import { createInsertSchema } from "drizzle-zod";
+import z from "zod";
 
 export const purchase = mysqlTable("purchase", {
   userId: char("user_id", { length: 36 }).notNull().references(() => user.id),
   eventId: char("event_id").notNull().references(() => events.id)
 })
+
+export const purchaseSchema = createInsertSchema(purchase);
+export type PurchaseSChema = z.infer<typeof purchaseSchema>;

@@ -1,6 +1,8 @@
 import { sql } from "drizzle-orm";
 import { char, int, mysqlTable, primaryKey, varchar } from "drizzle-orm/mysql-core";
 import { teams } from "./teams";
+import { createInsertSchema } from "drizzle-zod";
+import z from "zod";
 
 export const user = mysqlTable("user", {
   id: char("id", { length: 36 }).primaryKey().default(sql`(UUID())`),
@@ -19,3 +21,9 @@ export const players = mysqlTable("players", {
     })
   })
 )
+
+export const userSchema = createInsertSchema(user);
+export const playerSchema = createInsertSchema(players);
+
+export type UserSchema = z.infer<typeof userSchema>;
+export type PlayerSchema = z.infer<typeof playerSchema>;
