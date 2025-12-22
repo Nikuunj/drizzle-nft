@@ -1,1 +1,0 @@
-ALTER TABLE `events` MODIFY COLUMN `id` char(36) NOT NULL DEFAULT (UUID());

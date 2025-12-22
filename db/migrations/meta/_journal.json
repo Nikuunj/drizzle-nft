@@ -5,36 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1766340667645,
-      "tag": "0000_youthful_slipstream",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1766379047441,
-      "tag": "0001_warm_puck",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1766379371857,
-      "tag": "0002_past_thunderbolt_ross",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "5",
-      "when": 1766379750222,
-      "tag": "0003_deep_vivisector",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "5",
-      "when": 1766381102733,
-      "tag": "0004_quiet_mikhail_rasputin",
+      "when": 1766385596491,
+      "tag": "0000_fluffy_roughhouse",
       "breakpoints": true
     }
   ]
