@@ -1,7 +1,4 @@
-import { mysqlTable, varchar } from "drizzle-orm/mysql-core";
-
-export const contact = mysqlTable("contact", {
-  fistName: varchar("fist_name", { length: 100 }).notNull(),
-  lastName: varchar("last_name", { length: 100 }).notNull(),
-  email: varchar("email", { length: 100 }).primaryKey()
-})
+export { user } from "@/db/schema/tables/user"
+export { tags, priority, eventsTags } from "@/db/schema/tables/tags"
+export { events } from "@/db/schema/tables/event"
+export { userRelation, eventsRelation, tagsRelation, priorityRelation, eventsTagRelation } from "@/db/schema/relations"
