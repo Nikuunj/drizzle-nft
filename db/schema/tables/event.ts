@@ -4,7 +4,7 @@ import { user } from "./user";
 import { status } from "./tags";
 
 export const events = mysqlTable("events", {
-  id: char("id", { length: 36 }).primaryKey().default(sql`(UUID()`),
+  id: char("id", { length: 36 }).primaryKey().default(sql`(UUID())`),
   title: varchar("title", { length: 50 }).notNull(),
   description: varchar("description", { length: 255 }).notNull(),
   location: varchar("location", { length: 255 }).notNull(),
