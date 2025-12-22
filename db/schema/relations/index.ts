@@ -23,7 +23,7 @@ export const tagsRelation = relations(tags, ({ many }) => ({
   eventsTags: many(eventsTags)
 }))
 
-export const priorityRelation = relations(status, ({ many }) => ({
+export const statusRelation = relations(status, ({ many }) => ({
   events: many(events)
 }))
 
