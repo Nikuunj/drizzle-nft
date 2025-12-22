@@ -1,5 +1,6 @@
 export { user, players } from "@/db/schema/tables/user"
-export { tags, status, eventsTags } from "@/db/schema/tables/tags"
-export { events } from "@/db/schema/tables/event"
+export { tags, status } from "@/db/schema/tables/tags"
+export { events, eventsTags } from "@/db/schema/tables/event"
 export { teams } from "@/db/schema/tables/teams"
+export { purchase } from "@/db/schema/tables/purchase"
 export { userRelation, eventsRelation, tagsRelation, statusRelation, teamsRelation, playersRelation, eventsTagRelation } from "@/db/schema/relations"

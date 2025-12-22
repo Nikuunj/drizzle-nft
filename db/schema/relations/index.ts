@@ -1,12 +1,14 @@
 import { relations } from "drizzle-orm";
 import { players, user } from "../tables/user";
-import { events } from "../tables/event";
-import { eventsTags, status, tags } from "../tables/tags";
+import { events, eventsTags } from "../tables/event";
+import { status, tags } from "../tables/tags";
 import { teams } from "../tables/teams";
+import { purchase } from "../tables/purchase";
 
 export const userRelation = relations(user, ({ many }) => ({
   events: many(events),
   players: many(players),
+  purchase: many(purchase)
 }))
 
 export const eventsRelation = relations(events, ({ many, one }) => ({
@@ -19,6 +21,7 @@ export const eventsRelation = relations(events, ({ many, one }) => ({
     references: [status.id]
   }),
   eventsTags: many(eventsTags),
+  purchase: many(purchase)
 }))
 
 export const tagsRelation = relations(tags, ({ many }) => ({
@@ -44,6 +47,17 @@ export const playersRelation = relations(players, ({ one }) => ({
   }),
 }));
 
+
+export const puchaseRelation = relations(purchase, ({ one }) => ({
+  user: one(user, {
+    fields: [purchase.userId],
+    references: [user.id],
+  }),
+  event: one(events, {
+    fields: [purchase.eventId],
+    references: [events.id]
+  })
+}))
 export const eventsTagRelation = relations(eventsTags, ({ one }) => ({
   event: one(events, {
     fields: [eventsTags.eventsId],

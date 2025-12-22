@@ -3,7 +3,7 @@ import { char, int, mysqlTable, primaryKey, varchar } from "drizzle-orm/mysql-co
 import { teams } from "./teams";
 
 export const user = mysqlTable("user", {
-  id: char("id", { length: 36 }).primaryKey().default(sql`(UUID()`),
+  id: char("id", { length: 36 }).primaryKey().default(sql`(UUID())`),
   name: varchar("name", { length: 255 }).notNull(),
   email: varchar("email", { length: 255 }).notNull().unique(),
   password: varchar("password", { length: 255 }).notNull()

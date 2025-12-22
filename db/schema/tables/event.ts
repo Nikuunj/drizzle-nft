@@ -1,7 +1,7 @@
 import { sql } from "drizzle-orm";
 import { char, int, mysqlTable, timestamp, varchar } from "drizzle-orm/mysql-core";
 import { user } from "./user";
-import { status } from "./tags";
+import { status, tags } from "./tags";
 
 export const events = mysqlTable("events", {
   id: char("id", { length: 36 }).primaryKey().default(sql`(UUID())`),
@@ -12,7 +12,14 @@ export const events = mysqlTable("events", {
     onUpdate: "cascade",
     onDelete: "cascade"
   }),
+  price: int("price").notNull(),
   userId: char("user_id", { length: 36 }).notNull().references(() => user.id),
   dateTime: timestamp("date_time"),
   createAt: timestamp("create_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 })
+
+export const eventsTags = mysqlTable("events_tags", {
+  tagId: int("tagId").notNull().references(() => tags.id),
+  eventsId: char("eventsId", { length: 36 }).notNull().references(() => events.id)
+})
+
