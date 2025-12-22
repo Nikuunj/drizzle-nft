@@ -25,11 +25,13 @@
     "@types/react-dom": "^19",
     "axios": "^1.13.2",
     "drizzle-kit": "^0.31.8",
+    "drizzle-zod": "^0.8.3",
     "eslint": "^9",
     "eslint-config-next": "16.1.0",
     "mysql2": "^3.16.0",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "zod": "^4.2.1"
   },
   "ignoreScripts": [
     "sharp",
