@@ -1,0 +1,18 @@
+import { sql } from "drizzle-orm";
+import { char, int, mysqlTable, timestamp, varchar } from "drizzle-orm/mysql-core";
+import { user } from "./user";
+import { status } from "./tags";
+
+export const events = mysqlTable("events", {
+  id: char("id", { length: 36 }).primaryKey().default(sql`(UUID()`),
+  title: varchar("title", { length: 50 }).notNull(),
+  description: varchar("description", { length: 255 }).notNull(),
+  location: varchar("location", { length: 255 }).notNull(),
+  statusId: int("status_id").notNull().references(() => status.id, {
+    onUpdate: "cascade",
+    onDelete: "cascade"
+  }),
+  userId: char("user_id", { length: 36 }).notNull().references(() => user.id),
+  dateTime: timestamp("date_time"),
+  createAt: timestamp("create_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+})
