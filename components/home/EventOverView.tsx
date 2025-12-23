@@ -11,7 +11,10 @@ function EventOverView() {
           3
         </div>
       </div>
-      <div className="flex flex-wrap gap-8">
+      <div className=" grid grid-flow-col  gap-8">
+        <OverviewCard />
+        <OverviewCard />
+        <OverviewCard />
         <OverviewCard />
       </div>
     </div>

@@ -6,7 +6,7 @@ function OverviewCard() {
   return (
     <div className="
       relative
-      w-[309px]
+      
       min-h-[149px]
       p-[20px]
       flex flex-col
