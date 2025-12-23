@@ -17,7 +17,7 @@ export const events = mysqlTable("events", {
   }),
   price: int("price").notNull(),
   userId: char("user_id", { length: 36 }).notNull().references(() => user.id),
-  dateTime: timestamp("date_time"),
+  dateTime: timestamp("date_time").notNull(),
   createAt: timestamp("create_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 })
 
