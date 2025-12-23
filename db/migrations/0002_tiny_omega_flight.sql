@@ -1,0 +1,1 @@
+ALTER TABLE `events` MODIFY COLUMN `date_time` timestamp NOT NULL;
