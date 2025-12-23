@@ -26,8 +26,54 @@ export const eventsTags = mysqlTable("events_tags", {
   eventsId: char("eventsId", { length: 36 }).notNull().references(() => events.id)
 })
 
-export const eventsSchema = createInsertSchema(events);
-export const eventsTagsSchema = createInsertSchema(eventsTags);
+export const eventsTagsSchema = createInsertSchema(eventsTags, {
+  tagId: z.array(z.number())
+});
+const baseSchema = createInsertSchema(events, {
+  organizationName: z.string().min(1).max(255),
+  title: z.string().min(1).max(50),
+  description: z.string().min(1).max(255),
+  location: z.string().min(1).max(255),
+  statusId: z.number().min(1),
+  price: z.number().min(0),
+  userId: z.string().length(36),
+}).pick({
+  organizationName: true,
+  title: true,
+  description: true,
+  location: true,
+  statusId: true,
+  price: true,
+  userId: true,
+  dateTime: true,
+});
 
+export const eventsSchema = z.union([
+  z.object({
+    mode: z.literal("create"),
+    organizationName: baseSchema.shape.organizationName,
+    title: baseSchema.shape.title,
+    description: baseSchema.shape.description,
+    location: baseSchema.shape.location,
+    statusId: baseSchema.shape.statusId,
+    price: baseSchema.shape.price,
+    userId: baseSchema.shape.userId,
+    dateTime: baseSchema.shape.dateTime,
+    tagIds: z.array(z.number()),
+  }),
+  z.object({
+    mode: z.literal("edit"),
+    id: z.string().length(36),
+    organizationName: baseSchema.shape.organizationName,
+    title: baseSchema.shape.title,
+    description: baseSchema.shape.description,
+    location: baseSchema.shape.location,
+    statusId: baseSchema.shape.statusId,
+    price: baseSchema.shape.price,
+    userId: baseSchema.shape.userId,
+    dateTime: baseSchema.shape.dateTime,
+    tagIds: z.array(z.number()),
+  }),
+]);
 export type EventsSchema = z.infer<typeof eventsSchema>;
 export type EventsTagsSchema = z.infer<typeof eventsTagsSchema>;
