@@ -1,4 +1,4 @@
-import { LucideGripHorizontal, ChevronRight, ChevronLeft } from "lucide-react"
+import { LucideGripHorizontal, ChevronRight, ChevronLeft, Plus } from "lucide-react"
 
 function Event() {
   return (
@@ -14,9 +14,14 @@ function Event() {
       "
     >
       <div className="flex flex-col gap-2">
-        <p className="text-[16px] font-[600] h-[32px]">
-          Event <span className="font-[400]">(1,200)</span>
-        </p>
+        <div className="flex justify-between">
+          <p className="text-[16px] font-[600] h-[32px]">
+            Event <span className="font-[400]">(1,200)</span>
+          </p>
+          <span className="rounded-[8px] border border-[#0085FE] text-[12px] bg-[rgba(0,133,254,0.3)] flex items-center px-1 gap-1">
+            <Plus className="size-3" /> Create Event
+          </span>
+        </div>
         <div className="flex flex-col gap-1">
           <div className="font-[400] text-[12px] text-[#A4A7AA] h-[50px] grid grid-flow-col grid-cols-5 justify-between text-start  py-8">
             <p>Event Name        </p>
