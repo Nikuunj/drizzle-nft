@@ -1,6 +1,6 @@
 function CreateEditPage() {
   return (
-    <div></div>
+    <div>create edit page</div>
   )
 }
 

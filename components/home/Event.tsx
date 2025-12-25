@@ -1,4 +1,5 @@
 import { LucideGripHorizontal, ChevronRight, ChevronLeft, Plus } from "lucide-react"
+import Link from "next/link"
 
 function Event() {
   return (
@@ -18,8 +19,10 @@ function Event() {
           <p className="text-[16px] font-[600] h-[32px]">
             Event <span className="font-[400]">(1,200)</span>
           </p>
-          <span className="rounded-[8px] border border-[#0085FE] text-[12px] bg-[rgba(0,133,254,0.3)] flex items-center px-1 gap-1">
-            <Plus className="size-3" /> Create Event
+          <span className="rounded-[8px] border border-[#0085FE] text-[12px] bg-[rgba(0,133,254,0.3)] flex items-center  gap-1">
+            <Link href={'/ce/'} className=" flex gap-1 items-center px-1">
+              <Plus className="size-3" /> Create Event
+            </Link>
           </span>
         </div>
         <div className="flex flex-col gap-1">
@@ -55,24 +58,25 @@ function Event() {
 
 function EventCard() {
   return (
-    <div className="relative grid grid-flow-col py-2 grid-cols-5 items-center justify-between text-[14px]">
-      <div className="gap-3 flex items-center">
-        <div className="size-7.5 rounded-full bg-zinc-700">      </div>
-        <p>
-          Seattle Sand Dogs vs Nashville Sounds
-        </p>
-      </div>
-      <div>
-        Jun 22, 6:00 PM
-      </div>
-      <div>
-        Dehler Park
-      </div>
-      <div>
-        4,200
-      </div>
-      <div className="flex justify-between items-center">
-        <div className="opacity-100
+    <Link href={`/d/event-id`}>
+      <div className="relative grid grid-flow-col py-2 grid-cols-5 items-center justify-between text-[14px]">
+        <div className="gap-3 flex items-center">
+          <div className="size-7.5 rounded-full bg-zinc-700">      </div>
+          <p>
+            Seattle Sand Dogs vs Nashville Sounds
+          </p>
+        </div>
+        <div>
+          Jun 22, 6:00 PM
+        </div>
+        <div>
+          Dehler Park
+        </div>
+        <div>
+          4,200
+        </div>
+        <div className="flex justify-between items-center">
+          <div className="opacity-100
         w-fit
         px-2 py-0.5
         gap-2 flex items-center 
@@ -81,17 +85,18 @@ function EventCard() {
         border-[#C6E1FF3D]
         bg-[radial-gradient(111.15%_100%_at_49.9%_0%,rgba(198,225,255,0.08)_0%,rgba(198,225,255,0.04)_100%)]
         backdrop-blur-[50px]"
-        >
-          <div className="size-[6px] rounded-full bg-green-400">
+          >
+            <div className="size-[6px] rounded-full bg-green-400">
+            </div>
+            <div className="">Upcoming</div>
           </div>
-          <div className="">Upcoming</div>
+          <span><LucideGripHorizontal /></span>
         </div>
-        <span><LucideGripHorizontal /></span>
-      </div>
 
-      <div className="bg-gradient-to-r absolute bottom-0 from-[#C6E1FF29] via-zinc-800  to-[#C6E1FF14] h-[0.5px] w-full" />
-      <div className="bg-gradient-to-r absolute top-0 from-[#C6E1FF29] via-zinc-800  to-[#C6E1FF14] h-[0.5px] w-full" />
-    </div>
+        <div className="bg-gradient-to-r absolute bottom-0 from-[#C6E1FF29] via-zinc-800  to-[#C6E1FF14] h-[0.5px] w-full" />
+        <div className="bg-gradient-to-r absolute top-0 from-[#C6E1FF29] via-zinc-800  to-[#C6E1FF14] h-[0.5px] w-full" />
+      </div>
+    </Link>
   )
 }
 
